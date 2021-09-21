@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Domain\Contact\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sandbox', function () {
+    dd(Contact::all());
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
-    Route::get('/contacts', fn() => view('contacts.index'))->name('contacts.index');
+    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('/contacts', fn () => view('contacts.index'))->name('contacts.index');
 });
